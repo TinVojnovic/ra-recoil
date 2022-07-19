@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { configuratorAtoms } from "../state/atoms";
 
 export const Size: React.FC = () => {
   const [size, setSize] = useState("");
+  const setValue = useSetRecoilState(configuratorAtoms.sizeState);
+
+  
+
   return (
     <section>
       <label htmlFor="s">S</label>

@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { configuratorAtoms } from "../state/atoms";
 
 export const Discount: React.FC = () => {
   const [discount, setDiscount] = useState(0);
   const setValue = useSetRecoilState(configuratorAtoms.discountState);
+  const getValue = useRecoilValue(configuratorAtoms.discountState)
+
+  function onClick(){
+    setValue(discount)
+    console.log(getValue)
+  }
 
   return (
     <section>
@@ -16,7 +22,7 @@ export const Discount: React.FC = () => {
         name="discount"
         id="discount"
       />
-      <button onClick={() => setValue(discount)}>Add discount</button>
+      <button onClick={() => onClick()}>Add discount</button>
     </section>
   );
 };

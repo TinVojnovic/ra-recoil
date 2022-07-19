@@ -9,10 +9,12 @@ const totalPriceState = selector({
     const discount = get(configuratorAtoms.discountState);
     let sum: number = 0;
 
-    const toppingsPrices = toppings.map((topping) => {
+    toppings.map((topping) => {
       sum += topping.price;
     });
 
     return (sum + size) * (discount / 100);
   },
 });
+
+export const configuratorSelectors = { totalPriceState };
